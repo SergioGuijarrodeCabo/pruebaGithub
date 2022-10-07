@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+    <input type="radio" name="radio"  id="par"> <label>Par</label>
+    <input type="radio" name="radio" id="impar"> <label>Impar</label>
+    
+
+    <table id="tabla">
+        
+            <tr> <td>1</td></tr>
+            <tr><td>2</td>   </tr>
+            <tr> <td>3</td>  </tr>
+            <tr> <td>4</td>   </tr>
+       
+    </table>
+    
+    <h1 id="resultado">SUMA</h1>
+</body>
+
+<script>
+
+    window.onload= function(){
+        
+        var tabla = document.getElementById("tabla");
+
+        
+   
+        for (var i=0;i<4;i++){
+
+            var row = tabla.rows[i];
+           var cell = row.cells[0];
+            
+        
+            if(i==0||i==2){
+                
+                cell.style.backgroundColor="purple";
+            }if(i==1||i==3){
+                cell.style.backgroundColor="yellow";
+                
+            }
+           var numAleatorio =  Math.floor(Math.random() * (99 + 1)) + 0; 
+          
+           cell.innerText = numAleatorio;
+        }
+
+        var cajaPar = document.getElementById("par");
+    var cajaImpar = document.getElementById("impar");
+    var suma=0;
+
+    cajaPar.addEventListener("change", function(){
+       suma=0;
+         for (var i=0;i<4;i++){
+            
+        var row = tabla.rows[i];
+        var cell = row.cells[0];
+        var num = parseInt(cell.innerText);
+        
+        if (num%2==0){
+            
+            suma+=num;}}
+    document.getElementById("resultado").innerHTML=suma;
+    });
+
+    cajaImpar.addEventListener("change", function(){
+       suma=0;
+       for (var i=0;i<4;i++){
+          
+      var row = tabla.rows[i];
+      var cell = row.cells[0];
+      var num = parseInt(cell.innerText);
+      
+      if (num%2!=0){
+          
+          suma+=num;}}
+  document.getElementById("resultado").innerHTML=suma;
+  });}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+function sumar(){
+
+  
+
+}
+
+</script>
+</html>

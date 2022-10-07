@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="range" id="rango" min="1" max="14" value="1" onchange="generarCheckbox()">   
+    <p id="valorrango" >1</p>
+
+    <h1 id="resultado" >SUMA</h1>
+    <div id="capa"></div>
+
+
+
+       
+    
+</body>
+
+<script>    
+
+
+function generarCheckbox(){
+
+    var capa = document.getElementById("capa");
+    var rango = document.getElementById("rango");
+    capa.innerText ="";
+
+    document.getElementById("valorrango").innerText = rango.value;
+
+
+    var numeroCheckbox = parseInt(rango.value);
+
+    //BUCLE PARA DIBUJAR X IMÁGENES
+    for(var i=1;i<=numeroCheckbox;i++){
+
+
+
+        //CREAMOS UN OBJETO IMAGEN PARA CADA ITERACIÓN
+        var checkbox = document.createElement("input");
+        var texto = document.createElement("label");
+        
+        checkbox.type="checkbox";
+        var numAleatorio =  Math.floor(Math.random() * (99 + 1)) + 0; 
+
+       // alert(numAleatorio);
+        
+        checkbox.value = numAleatorio;
+        texto.innerText = numAleatorio;
+        capa.appendChild(checkbox);
+        capa.appendChild(texto);
+
+        var suma =0;
+   
+        checkbox.addEventListener("click", function(){
+            if (this.checked == true){
+
+                suma += parseInt(this.value);
+            }
+            if (this.checked == false){
+
+            suma = suma- parseInt(this.value);
+            }
+        
+            document.getElementById("resultado").innerText = suma;
+
+
+        });
+
+       
+
+    }
+
+
+}
+</script>
+</html>
